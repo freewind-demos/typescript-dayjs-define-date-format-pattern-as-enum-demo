@@ -7,22 +7,25 @@ TypeScript Dayjs Define Date Format Pattern as Consts Demo
 const YYYYMMDD_slash = 'YYYY-MM-DD`;
 ```
 
-尝试结合object property name与type来解决这个问题
+由于JavaScript变量名可以包含部分unicode，所以可以找到与`/`或`-`相似的unicode:
+- `ⲻ` : https://www.compart.com/en/unicode/U+2CBB
+- `Ⳇ` : https://www.compart.com/en/unicode/U+2CC6
+
+然后定义：
 
 ```
-const PATTERNS = {
-  'M/D/YYYY': 'M/D/YYYY' as DateFormatPattern,
-  'MM/DD/YYYY': 'MM/DD/YYYY' as DateFormatPattern,
-  'YYYY-MM-DD': 'YYYY-MM-DD' as DateFormatPattern,
+enum DateFormatPattern {
+  MⳆDⳆYYYY = 'M/D/YYYY',
+  MMⳆDDⳆYYYY = 'MM/DD/YYYY',
+  YYYYⲻMMⲻDD = 'YYYY-MM-DD',
 }
-
-type DateFormatPattern = 'M/D/YYYY' | 'MM/DD/YYYY' | 'YYYY-MM-DD'
-
-function formatDate(date: Date, pattern: DateFormatPattern): string {
-}
-
-const formattedDate = formatDate(new Date(), PATTERNS['YYYY-MM-DD'])
 ```
+
+有一个地方需要验证，nodejs下正常运行，但不知道webpack是否能正常处理。
+
+相关demo:
+1. 变量名可以用哪些unicode: https://github.com/freewind-demos/typescript-unicode-function-name-demo
+2. 使用object+type来定义: https://github.com/freewind-demos/typescript-dayjs-define-date-format-pattern-as-consts-demo
 
 ```
 npm install
