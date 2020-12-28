@@ -1,4 +1,4 @@
-TypeScript Dayjs Define Date Format Pattern as Consts Demo
+TypeScript Dayjs Define Date Format Pattern as Enum Demo
 ========================================================
 
 格式化日期时，通常需要定义格式，但由于变量名不能包含`/`及`-`等字符，只能定义成类似：
@@ -20,6 +20,8 @@ enum DateFormatPattern {
   YYYYⲻMMⲻDD = 'YYYY-MM-DD',
 }
 ```
+
+注意，`=`左边与右边的`/`及`-`并不一样，只是看起来像。
 
 有一个地方需要验证，nodejs下正常运行，但不知道webpack是否能正常处理。
 
