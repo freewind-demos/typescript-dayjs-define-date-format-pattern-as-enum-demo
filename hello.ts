@@ -1,7 +1,17 @@
 import dayjs from 'dayjs';
 
-const date1 = dayjs('2019-11-22').toDate()
-console.log(date1);
+const PATTERNS = {
+  'M/D/YYYY': 'M/D/YYYY' as DateFormatPattern,
+  'MM/DD/YYYY': 'MM/DD/YYYY' as DateFormatPattern,
+  'YYYY-MM-DD': 'YYYY-MM-DD' as DateFormatPattern,
+}
 
-const date2 = dayjs('11/22/2019').toDate()
-console.log(date2);
+type DateFormatPattern = 'M/D/YYYY' | 'MM/DD/YYYY' | 'YYYY-MM-DD'
+
+function formatDate(date: Date, pattern: DateFormatPattern): string {
+  return dayjs(date).format(pattern)
+}
+
+const formattedDate = formatDate(new Date(), PATTERNS['YYYY-MM-DD'])
+console.log("### formattedDate: ", formattedDate);
+
