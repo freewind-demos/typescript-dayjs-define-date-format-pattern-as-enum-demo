@@ -1,6 +1,17 @@
 TypeScript Dayjs Define Date Format Pattern as Enum Demo
 ========================================================
 
+更新：
+实际上可以直接使用任意string作为enum的key，就不需要用unicode那么复杂的办法了，可以直接：
+
+```
+enum StringKeyEnum {
+  'M/D/YYYY' = 'M/D/YYYY',
+  'MM/DD/YYYY' = 'MM/DD/YYYY',
+  'YYYY-MM-DD' = 'YYYY-MM-DD',
+}
+```
+
 格式化日期时，通常需要定义格式，但由于变量名不能包含`/`及`-`等字符，只能定义成类似：
 
 ```

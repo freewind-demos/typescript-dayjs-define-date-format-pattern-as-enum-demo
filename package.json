@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "demo": "ts-node hello.ts"
+    "demo": "ts-node StringKeyEnum.ts && ts-node UnicodeKeyEnum.ts"
   },
   "devDependencies": {
     "@types/node": "8.9.5",
